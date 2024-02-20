@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "/payment_host";
+
+service PaymentHostService {
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc Withdraw(WithdrawRequest) returns (WithdrawResponse);  
+}
+
+message WithdrawRequest {
+    string EntityName = 1;
+    string ReceiverWalletAddress = 2;
+    int64 Amount = 3;
+}
+
+message WithdrawResponse {
+    string TransactionHash = 1;
+}
+
+message RegisterRequest {
+    string Name = 1;
+}
+
+message RegisterResponse {
+    string WalletAddress = 1; 
+}

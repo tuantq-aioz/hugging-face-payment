@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  aioz-ai-payment-host-db:
+    image: postgres
+    container_name: aioz-ai-payment-host-db
+    env_file:
+      - ./app.env
+    expose:
+      - "5555"
+    ports:
+      - "5555:5555"
+    command: -p 5555
+    restart: always
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
